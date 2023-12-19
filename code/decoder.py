@@ -1,8 +1,6 @@
-from reedsolo import RSCodec
-import numpy as np
 from glass import Glass
 from collections import defaultdict
-import os, sys, logging
+import sys
 class Decoder():
     def __init__(self, input_file, output_file, chunk_num, header_size, rs_size, chunk_data_size):
         self.in_file = input_file
@@ -39,13 +37,11 @@ class Decoder():
             else:
                 seen_seeds[seed] += 1 
             
-            if line % 100 == 0:
-                print("Already read {} lines, {} chunks are done. Number of errors: {} ({}%)"
-                      .format(line, len(self.glass.done_segments), errors, errors/float(line)*100))
+            if line % 50 == 0:
+                print("Already read {} lines. {} done chunks.".format(line, len(self.glass.done_segments)))
             if self.glass.num_chunks == len(self.glass.done_segments):
-                print("Already read {} lines, {} chunks are done. Number of errors: {} ({}%)"
-                      .format(line, len(self.glass.done_segments), errors, errors/float(line)*100))
-                print("Done!")
+                print("All chunks are done! Totally read {} lines.".format(line))
+                print("Finished! The decoded picture is stored in folder output!")
                 break
         f.close()
         
@@ -54,8 +50,3 @@ class Decoder():
             res += ''.join(map(chr, x))
         with open(self.out_file, 'wb') as f:
             f.write(res)
-
-if __name__ == '__main__':
-    in_file = './src/50-SF.txt'
-    out_file = './output/50-SF.jpg'
-    Decoder(input_file=in_file, output_file=out_file, chunk_num=1494, header_size=4, rs_size=5, chunk_data_size=16).decoding()

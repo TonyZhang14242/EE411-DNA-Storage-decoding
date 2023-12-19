@@ -26,9 +26,9 @@ class Glass:
         num = dna_str.replace('A','0').replace('C','1').replace('G','2').replace('T','3')
         #print(num)
         s = ''.join('{0:02b}'.format(int(num[t])) for t in range(0, len(num),1))
-        print(s)
+        #print(s)
         data = [int(s[t:t+8],2) for t in range(0,len(s), 8)]
-        print(data)
+        #print(data)
         return data
     
     def get_src_blocks_wrap(self):

@@ -1,1 +1,1 @@
-python ./code/decoder.py
+python ./code/main.py
