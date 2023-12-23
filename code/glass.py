@@ -23,6 +23,7 @@ class Glass:
         #self.PRNG = PRNG(K = self.num_chunks, delta = 0.05, c = 0.1, np = False)    
 
     def dna_to_int_arr(self, dna_str):
+        #print(dna_str)
         num = dna_str.replace('A','0').replace('C','1').replace('G','2').replace('T','3')
         #print(num)
         s = ''.join('{0:02b}'.format(int(num[t])) for t in range(0, len(num),1))
