@@ -6,9 +6,17 @@
 
 ### Contribution
 
-张镇涛：
+张镇涛(50%)：
 
-金扬：
+overall system setup, translation, error recovery, documentation/report writing
+
+金扬(50%)：
+
+message passing, integrity check, project file structure optimization, I/O optimization, report inspection
+
+#### Project Repository
+
+https://github.com/TonyZhang14242/EE411-DNA-Storage-decoding
 
 
 
